@@ -97,8 +97,27 @@ class SortingRobot:
         Sort the robot's list.
         """
         # Fill this out
-        pass
-
+        # Maybe like bubble sort? 
+        while not self.light_is_on():
+            self.set_light_on()
+            while self.can_move_left():
+                self.swap_item()
+                self.move_left()
+                if self.compare_item() < 0:
+                    self.swap_item()
+                    self.set_light_off()
+                self.move_right()
+                self.swap_item()
+                self.move_left()
+            while self.can_move_right():
+                self.swap_item()
+                self.move_right()
+                if self.compare_item() > 0:
+                    self.swap_item()
+                    self.set_light_off()
+                self.move_left()
+                self.swap_item()
+                self.move_right()
 
 if __name__ == "__main__":
     # Test our your implementation from the command line
@@ -110,3 +129,24 @@ if __name__ == "__main__":
 
     robot.sort()
     print(robot._list)
+
+
+
+
+# def bubble_sort( arr ):
+#     sorted_nums = [*arr]
+#     while True:
+#         swapped = False
+
+#         for i in range(0, len(sorted_nums)-1):
+#             if sorted_nums[i] > sorted_nums[i+1]:
+#                 greater = sorted_nums[i]
+#                 lesser = sorted_nums[i+1]
+
+#                 sorted_nums[i] = lesser
+#                 sorted_nums[i+1] = greater
+
+#                 swapped = True
+#         if not swapped: 
+#                 break
+#     return sorted_nums
